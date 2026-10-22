@@ -38,31 +38,32 @@ Na versão refinada:
 
 ### 📐 Diagrama do modelo inicial
 
-![Diagrama EER do e-commerce base](imagens/ecommerce_base.png)
+![Diagrama EER do e-commerce base](base/imagens/ecommerce_base.png)
 
 ### 📐 Diagrama do modelo ampliado
 
-![Diagrama EER do e-commerce refinado](imagens/ecommerce_refinado.png)
+![Diagrama EER do e-commerce refinado](refinado/imagens/ecommerce_refinado.png)
 
 ## 📁 Estrutura dos arquivos
 
 | Caminho | Finalidade |
 | --- | --- |
 | `base/ecommerce_base.sql` | Criação da versão base, em esquema separado. |
-| `sql/ecommerce_refinado.sql` | Criação das tabelas e constraints da versão refinada. |
-| `sql/insercao_dados.sql` | Dados fictícios para as 13 tabelas. |
-| `sql/consultas.sql` | 18 consultas comentadas com suas perguntas. |
-| `modelos/` | Modelos editáveis no MySQL Workbench (`.mwb`). |
-| `imagens/` | Diagramas exportados em PNG. |
+| `refinado/ecommerce_refinado.sql` | Criação das tabelas e constraints da versão refinada. |
+| `refinado/insercao_dados.sql` | Dados fictícios para as 13 tabelas. |
+| `refinado/consultas.sql` | 18 consultas comentadas com suas perguntas. |
+| `base/ecommerce_base.mwb` | Modelo inicial editável no MySQL Workbench. |
+| `refinado/ecommerce_refinado.mwb` | Modelo ampliado editável no MySQL Workbench. |
+| `base/imagens/` e `refinado/imagens/` | Diagramas exportados em PNG, separados por versão. |
 
 ## 🚀 Como executar
 
 Utilize **MySQL 8.0.16 ou superior**, para aplicação das constraints `CHECK`, e um cliente SQL, como o MySQL Workbench. As consultas também utilizam CTEs do MySQL 8.
 
 1. Conecte o Workbench ao seu servidor MySQL.
-2. Abra `sql/ecommerce_refinado.sql` em **File → Open SQL Script** e execute o script completo.
-3. Execute `sql/insercao_dados.sql` uma vez, com as tabelas vazias.
-4. Abra `sql/consultas.sql` e execute as consultas individualmente para analisar seus resultados.
+2. Abra `refinado/ecommerce_refinado.sql` em **File → Open SQL Script** e execute o script completo.
+3. Execute `refinado/insercao_dados.sql` uma vez, com as tabelas vazias.
+4. Abra `refinado/consultas.sql` e execute as consultas individualmente para analisar seus resultados.
 
 Os scripts selecionam o esquema com `USE ecommerce_refinado`. O script de inserção usa identificadores fixos: executá-lo novamente sobre dados já inseridos pode causar erros de chave duplicada. O script de criação não limpa um banco existente.
 
@@ -70,7 +71,7 @@ A versão base é opcional e independente: execute `base/ecommerce_base.sql` par
 
 Para abrir os diagramas editáveis, use **File → Open Model** e selecione o arquivo `.mwb` correspondente.
 
-**Atenção ao modelo importado:** a constraint `chk_cliente_pf_pj` está no SQL, mas não foi preservada no `.mwb` importado do servidor. Utilize `sql/ecommerce_refinado.sql` como referência para criar o banco com todas as regras. Gerar o SQL somente pelo `.mwb` pode omitir essa validação. Os nomes das tabelas do modelo importado podem aparecer em minúsculas, conforme a configuração do servidor de origem.
+**Atenção ao modelo importado:** a constraint `chk_cliente_pf_pj` está no SQL, mas não foi preservada no `.mwb` importado do servidor. Utilize `refinado/ecommerce_refinado.sql` como referência para criar o banco com todas as regras. Gerar o SQL somente pelo `.mwb` pode omitir essa validação. Os nomes das tabelas do modelo importado podem aparecer em minúsculas, conforme a configuração do servidor de origem.
 
 ## 🔎 Consultas e perguntas de negócio
 
